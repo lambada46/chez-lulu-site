@@ -48,9 +48,11 @@ export default function Header({ phoneHref }: { phoneHref?: string }) {
       </button>
       <nav id="site-navigation" className="mainNavigation" aria-label="Navigation principale" data-open={menuOpen}>
         {navLabels.map((label,index)=><a href={navDestinations[index]} key={label} onClick={()=>setMenuOpen(false)}>{label}</a>)}
-            </nav>
+      </nav>
       <nav className="languageSwitcher" aria-label="Language / Langue">
-        {(['fr','en','es','it'] as const).map(lang => <a key={lang} href={localizedHref(lang, isMenu ? 'carte' : '") + (isMenu ? '' : (typeof window === 'undefined' ? '' : window.location.hash))} hrefLang={lang} lang={lang} aria-current={locale === lang ? 'page' : undefined}>{lang.toUpperCase()}</a>)}
+        {(['fr','en','es','it'] as const).map(lang => (
+          <a key={lang} href={localizedHref(lang, isMenu ? 'carte' : '')} hrefLang={lang} lang={lang} aria-current={locale === lang ? 'page' : undefined}>{lang.toUpperCase()}</a>
+        ))}
       </nav>
       {phoneHref ? (
         <a className="reserve" href={phoneHref} aria-label="Appeler pour réserver">
