@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { type Locale, isForeignLocale, localizedHref, texts } from './i18n';
 
@@ -10,6 +10,7 @@ export default function Header({ phoneHref }: { phoneHref?: string }) {
   const prefix = pathname.split('/')[1] || '';
   const locale: Locale = isForeignLocale(prefix) ? prefix : 'fr';
   const isMenu = pathname.endsWith('/carte');
+  useEffect(() => { document.documentElement.lang = locale; }, [locale]);
   const homeHref = localizedHref(locale);
   const menuHref = localizedHref(locale, 'carte');
   const navLabels = locale === 'fr' ? ['La carte','Notre histoire','Exposition','Boutique','Dans la presse','Nous trouver'] : [...texts[locale].nav];
