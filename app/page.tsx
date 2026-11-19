@@ -51,7 +51,31 @@ export default function Home(){return <>
 </div>
 </section>
 <section className="section shop compactSection" id="boutique" tabIndex={-1}><div><span className="eyebrow">04 / LA BOUTIQUE</span><h2>Un peu de Lulu<br/>chez vous.</h2><p>Objets, textiles et petites idées à emporter. Une première sélection arrive bientôt.</p><span className="smallNote">Boutique MVP · produits et prix à confirmer</span></div></section>
-<section className="press"><span className="eyebrow">05 / ON PARLE DE NOUS</span><h2>On parle de nous.</h2><p>Les articles et leurs liens seront ajoutés après vérification.</p></section>
+<section className="press" id="presse" aria-labelledby="press-title">
+  <span className="eyebrow">05 / DANS LA PRESSE</span>
+  <h2 id="press-title">On parle de nous.</h2>
+  <p className="pressIntro">Quelques regards sur notre bistrot et les artistes qui font vivre ses murs.</p>
+  <div className="pressArticles">
+    <article className="pressArticle">
+      <span className="pressSource">Avignon(s) · Novembre 2026</span>
+      <h3>Chez Lulu dans les « Échos des commerces »</h3>
+      <p>Le magazine de la Ville d’Avignon présente notre café-bistrot de la rue Carnot.</p>
+      <a href="https://www.avignon.fr/fileadmin/actualites/Documents/2026/11_novembre/Kiosque/Avignons_108_p1_p32-DP1.pdf" target="_blank" rel="noopener noreferrer" aria-label="Lire Chez Lulu dans le magazine Avignon(s), novembre 2026 (PDF)">Lire l’article ↗</a>
+    </article>
+    <article className="pressArticle">
+      <span className="pressSource">Le Dauphiné Libéré · 3 juillet 2026</span>
+      <h3>Chez Lulu, un nouveau bistrot en ville</h3>
+      <p>Un article consacré à l’ouverture du restaurant au cœur d’Avignon.</p>
+      <a href="https://www.ledauphine.com/economie/2026/07/03/chez-lulu-un-nouveau-bistrot-en-ville-faute-de-buvette-au-rocher-des-doms" target="_blank" rel="noopener noreferrer">Lire l’article ↗</a>
+    </article>
+    <article className="pressArticle">
+      <span className="pressSource">Le Dauphiné Libéré · 1er juillet 2026</span>
+      <h3>Marc Simelière expose chez Lulu</h3>
+      <p>La presse revient sur une des premières expositions accueillies au bistrot.</p>
+      <a href="https://www.ledauphine.com/culture-loisirs/2026/07/01/marc-simeliere-expose-dans-le-nouveau-bistrot-chez-lulu" target="_blank" rel="noopener noreferrer">Lire l’article ↗</a>
+    </article>
+  </div>
+</section>
 <section className="section location" id="infos" tabIndex={-1}>
 <div>
   <span className="eyebrow">06 / NOUS TROUVER</span>
