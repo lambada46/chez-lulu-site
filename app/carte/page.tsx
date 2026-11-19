@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { menu, type MenuCategory } from './menu';
 import MenuTabs from './menu-tabs';
+import { alternativeLanguages } from '../i18n';
 
 export const metadata: Metadata = {
   title: 'La carte | Chez Lulu, café-bistrot à Avignon',
   description: 'La carte du Chez Lulu, café-bistrot à Avignon. La Provence, sans cérémonie.',
-  alternates: { canonical: '/carte' },
+  alternates: { canonical: '/carte', languages: alternativeLanguages('carte') },
 };
 
 const priceFormatter = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' });
