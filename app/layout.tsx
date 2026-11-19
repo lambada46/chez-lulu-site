@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Header from './header';
-import { phoneHref, siteUrl } from './site';
+import { phoneHref, siteUrl, instagramHref } from './site';
 import './style.css';
 
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer>
           <strong>CHEZ LULU</strong>
           <span>La Provence, sans cérémonie.</span>
-          <span>Avignon · France</span>
+          <span>42 rue Carnot · Avignon</span>
+          <a href={instagramHref} target="_blank" rel="noopener noreferrer" aria-label="Chez Lulu sur Instagram">Instagram ↗</a>
         </footer>
       </body>
     </html>
