@@ -436,3 +436,7 @@ footer strong {
     scroll-behavior: auto;
   }
 }
+
+/* Prix au verre / pichet / bouteille et autres formats de la carte */
+.menuVariants{list-style:none;padding:0;margin:10px 0 0;max-width:22rem;}
+.menuDishes .menuVariants li{display:flex;justify-content:space-between;gap:20px;border:0;padding:4px 0;font-size:.92rem;color:#555;}
