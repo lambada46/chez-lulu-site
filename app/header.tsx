@@ -41,6 +41,7 @@ export default function Header({ phoneHref }: { phoneHref?: string }) {
         <a href="/#histoire" onClick={() => setMenuOpen(false)}>Notre histoire</a>
         <a href="/#expo" onClick={() => setMenuOpen(false)}>Exposition</a>
         <a href="/#boutique" onClick={() => setMenuOpen(false)}>Boutique</a>
+        <a href="/#presse" onClick={() => setMenuOpen(false)}>Dans la presse</a>
         <a href="/#infos" onClick={() => setMenuOpen(false)}>Nous trouver</a>
       </nav>
       {phoneHref ? (
