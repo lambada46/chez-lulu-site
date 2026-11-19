@@ -22,13 +22,21 @@ export default function Carte() {
         <section className="menuCategory" key={name}>
           <h2>{name}</h2>
           <ul className="menuDishes">
-            {dishes.map(({ name: dishName, description, priceEuros, allergens }) => (
+            {dishes.map(({ name: dishName, description, priceEuros, priceLabel, variants, allergens }) => (
               <li key={dishName}>
                 <div className="menuDishHeading">
                   <h3>{dishName}</h3>
                   {priceEuros !== undefined && <span>{priceFormatter.format(priceEuros)}</span>}
+                  {priceLabel && <span>{priceLabel}</span>}
                 </div>
                 {description && <p>{description}</p>}
+                {variants && variants.length > 0 && (
+                  <ul className="menuVariants">
+                    {variants.map((variant) => (
+                      <li key={variant.label}><span>{variant.label}</span><span>{priceFormatter.format(variant.priceEuros)}</span></li>
+                    ))}
+                  </ul>
+                )}
                 {allergens && allergens.length > 0 && (
                   <p className="muted">Allergènes : {allergens.join(', ')}</p>
                 )}
