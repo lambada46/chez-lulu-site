@@ -14,6 +14,10 @@ const desktopHeroSource = existsSync(join(process.cwd(), 'public', desktopHero))
   ? desktopHero
   : '/images/facade.jpg';
 const hasMobileHero = existsSync(join(process.cwd(), 'public', mobileHero));
+const magretPhoto = existsSync(join(process.cwd(), 'public/images/chez-lulu-magret.jpg')) ? '/images/chez-lulu-magret.jpg' : '/images/brandade.jpg';
+const planchePhoto = existsSync(join(process.cwd(), 'public/images/chez-lulu-planche.jpg')) ? '/images/chez-lulu-planche.jpg' : '/images/terrasse.jpg';
+const hasPinsaPhoto = existsSync(join(process.cwd(), 'public/images/chez-lulu-daube-pinsa.jpg'));
+
 
 export default function Home(){return <>
 <main id="accueil" tabIndex={-1}>
@@ -29,23 +33,32 @@ export default function Home(){return <>
     <a className="lightButton" href="/carte">Découvrir la carte</a>
   </div>
 </section>
-<section className="section intro" id="carte" tabIndex={-1}><div className="sectionText"><span className="eyebrow">01 / À TABLE</span><h2>Simplement<br/>bon.</h2><p>Une cuisine de bistrot, des plats généreux et le plaisir de partager un bon moment.</p><a className="textLink" href="/carte">Voir la carte</a></div><div className="photo"><Image src="/images/brandade.jpg" alt="Plat de brandade et salade au comptoir" fill sizes="(max-width: 850px) 88vw, 46vw"/></div></section>
+<section className="section intro" id="carte" tabIndex={-1}>
+  <div className="sectionText">
+    <span className="eyebrow">01 / À TABLE</span>
+    <h2>Simplement<br/>bon.</h2>
+    <p>Une cuisine de saison, inspirée du Sud et libre de ses envies.</p>
+    <a className="textLink" href="/carte">Découvrir la carte</a>
+  </div>
+  <div className="introGallery">
+    <div className="photo"><Image src={magretPhoto} alt="Magret de canard servi chez Lulu" fill sizes="(max-width: 850px) 90vw, 36vw"/></div>
+    {hasPinsaPhoto && <div className="photo introPinsa"><Image src="/images/chez-lulu-daube-pinsa.jpg" alt="Pinsa garnie à la daube et salade, servie chez Lulu" fill sizes="(max-width: 850px) 45vw, 20vw"/></div>}
+  </div>
+</section>
 <section className="section story" id="histoire" tabIndex={-1}>
-<div className="photo"><Image src="/images/terrasse.jpg" alt="Terrasse du Chez Lulu dans les rues d’Avignon" fill sizes="(max-width: 850px) 88vw, 46vw"/></div>
-<div className="sectionText">
-  <span className="eyebrow">02 / L’ESPRIT LULU</span>
-  <h2>Chez Lulu,<br/>tout simplement.</h2>
-  <p>Une cuisine inspirée des traditions du Sud, des plats qui suivent les saisons et la liberté d’y mettre notre touche personnelle.</p>
-  <p>On vient pour un café, pour déjeuner, pour se retrouver autour d’un verre. Et, au fil des mois, découvrir les artistes qui exposent sur nos murs.</p>
-  <p>À Avignon, la Provence se vit ici sans cérémonie.</p>
-</div>
+  <div className="photo"><Image src={planchePhoto} alt="Planche à partager et vin sur une table chez Lulu" fill sizes="(max-width: 850px) 88vw, 46vw"/></div>
+  <div className="sectionText">
+    <span className="eyebrow">02 / L’ESPRIT LULU</span>
+    <h2>Chez Lulu,<br/>tout simplement.</h2>
+    <p>Un café, un déjeuner, un verre entre amis. Une cuisine inspirée des traditions du Sud, de l’art sur les murs et le plaisir de se retrouver, sans cérémonie.</p>
+  </div>
 </section>
 <section className="section exhibit compactSection" id="expo" tabIndex={-1} aria-labelledby="expo-title">
 <div className="exhibitInner">
   <span className="eyebrow">03 / EN CE MOMENT</span>
   <h2 id="expo-title">MAT GM<br/><span className="exhibitSubtitle">Exposition de peintures</span></h2>
   <p className="exhibitDates">Du 20 novembre 2026 au 7 février 2027</p>
-  <p>Chez Lulu accueille les peintures de MAT GM. Une nouvelle occasion de découvrir un univers artistique autour d’un café, d’un déjeuner ou d’un verre.</p>
+  
   <p className="exhibitEvent"><strong>Vernissage</strong> · Vendredi 4 décembre 2026 à 18h</p>
   <a className="textLink" href="https://www.instagram.com/chezluluavignon/" target="_blank" rel="noopener noreferrer">Suivre les expositions sur Instagram ↗</a>
 </div>
