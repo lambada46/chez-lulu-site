@@ -393,42 +393,109 @@ footer strong {
   margin-bottom: 18px;
   line-height: 1.08;
 }
-.menuPage > p {
-  max-width: 46ch;
+.menuIntro {
+  max-width: 58ch;
+  margin-bottom: clamp(26px, 5vw, 42px);
+  color: #5d5b55;
 }
-.menuCategory {
-  margin-top: clamp(40px, 7vw, 72px);
+
+.menuTabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 3px 2px;
+  border-bottom: 1px solid #e3dfd6;
+}
+.menuTabs button {
+  position: relative;
+  flex: 1 0 auto;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 4px 4px 0 0;
+  background: transparent;
+  color: #5d5b55;
+  font: 600 .9rem/1.25 Arial, Helvetica, sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.menuTabs button[aria-selected="true"] {
+  border-bottom-color: var(--accent);
+  background: #f0ebe3;
+  color: var(--ink);
+}
+.menuTabs button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+}
+.menuPanel {
+  margin-top: clamp(28px, 5vw, 44px);
+}
+.menuPanel:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.menuCategory + .menuCategory {
+  margin-top: clamp(26px, 5vw, 42px);
+  padding-top: clamp(24px, 4vw, 36px);
+  border-top: 1px solid #e3dfd6;
 }
 .menuCategory h2 {
-  font-size: clamp(1.65rem, 5vw, 2.75rem);
+  font-size: clamp(1.45rem, 1.18rem + 1.35vw, 2.2rem);
+  font-weight: 600;
   margin-bottom: 18px;
 }
-.menuDishes {
+.menuDishes,
+.menuVariants {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.menuDishes li {
-  border-top: 1px solid #e3dfd6;
-  padding-block: 18px;
+.menuDishes > li + li {
+  margin-top: 18px;
 }
 .menuDishHeading {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4px 12px;
+  gap: 10px;
 }
 .menuDishHeading h3 {
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
 }
-.menuDishHeading span {
-  margin-inline-start: auto;
+.menuPrice {
+  display: grid;
+  gap: 2px;
+  text-align: right;
+  font-size: .9rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
 .menuDishes p {
-  margin: 8px 0 0;
+  max-width: 60ch;
+  margin: 4px 0 0;
+  color: #66635d;
+  font-size: .875rem;
+  line-height: 1.55;
+}
+.menuVariants {
+  width: min(100%, 20rem);
+  margin: 8px 0 0 auto;
+}
+.menuVariants li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  padding-block: 3px;
+  color: #66635d;
+  font-size: .875rem;
+}
+.menuVariants .menuPrice {
+  color: var(--ink);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -436,7 +503,3 @@ footer strong {
     scroll-behavior: auto;
   }
 }
-
-/* Prix au verre / pichet / bouteille et autres formats de la carte */
-.menuVariants{list-style:none;padding:0;margin:10px 0 0;max-width:22rem;}
-.menuDishes .menuVariants li{display:flex;justify-content:space-between;gap:20px;border:0;padding:4px 0;font-size:.92rem;color:#555;}
