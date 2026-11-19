@@ -54,34 +54,24 @@ export default function Home(){return <>
 <section className="press" id="presse" aria-labelledby="press-title">
   <span className="eyebrow">05 / DANS LA PRESSE</span>
   <h2 id="press-title">On parle de nous.</h2>
-  <p className="pressIntro">Des mots sur le bistrot, ses rencontres et les artistes qui passent par chez nous.</p>
   <div className="pressArticles">
     <article className="pressArticle">
-      <a className="pressBrandLink" href="https://www.avignon.fr/fileadmin/actualites/Documents/2026/11_novembre/Kiosque/Avignons_108_p1_p32-DP1.pdf#page=20" target="_blank" rel="noopener noreferrer" aria-label="Lire l’article Chez Lulu dans le magazine Avignon(s), novembre 2026">
-        <span className="pressMagazineLogo" aria-label="Avignon(s), le magazine des Avignonnais">avignon<span>(s)</span></span>
+      <a className="pressBrandLink" href="https://www.avignon.fr/fileadmin/actualites/Documents/2026/11_novembre/Kiosque/Avignons_108_p1_p32-DP1.pdf#page=20" target="_blank" rel="noopener noreferrer" aria-label="Lire la publication du magazine Avignon(s)">
+        <span className="pressMagazineLogo">avignon<span>(s)</span></span>
       </a>
-      <span className="pressSource">Avignon(s) · Novembre 2026</span>
-      <h3>Quoi de neuf dans nos commerces ?</h3>
-      <p className="pressHighlight">Le magazine municipal met en lumière le café-bistrot de la rue Carnot et son esprit de quartier.</p>
-      <a className="pressReadMore" href="https://www.avignon.fr/fileadmin/actualites/Documents/2026/11_novembre/Kiosque/Avignons_108_p1_p32-DP1.pdf#page=20" target="_blank" rel="noopener noreferrer">Lire l’article original ↗</a>
+      <blockquote>« Quoi de neuf dans nos commerces ? »</blockquote>
     </article>
     <article className="pressArticle">
-      <a className="pressBrandLink" href="https://www.ledauphine.com/economie/2026/07/03/chez-lulu-un-nouveau-bistrot-en-ville-faute-de-buvette-au-rocher-des-doms" target="_blank" rel="noopener noreferrer" aria-label="Lire le reportage sur l’ouverture de Chez Lulu dans Le Dauphiné Libéré">
+      <a className="pressBrandLink" href="https://www.ledauphine.com/economie/2026/07/03/chez-lulu-un-nouveau-bistrot-en-ville-faute-de-buvette-au-rocher-des-doms" target="_blank" rel="noopener noreferrer" aria-label="Lire l’article sur Chez Lulu dans Le Dauphiné Libéré">
         <span className="pressDauphineLogo">Le Dauphiné <strong>Libéré</strong></span>
       </a>
-      <span className="pressSource">Le Dauphiné Libéré · 3 juillet 2026</span>
-      <h3>Chez Lulu, un nouveau bistrot en ville ouvert par les gérants de Mamma Corsica</h3>
       <blockquote>« nouveau bistrot convivial du centre-ville pour se sentir comme chez soi »</blockquote>
-      <a className="pressReadMore" href="https://www.ledauphine.com/economie/2026/07/03/chez-lulu-un-nouveau-bistrot-en-ville-faute-de-buvette-au-rocher-des-doms" target="_blank" rel="noopener noreferrer">Lire l’article original ↗</a>
     </article>
     <article className="pressArticle">
-      <a className="pressBrandLink" href="https://www.ledauphine.com/culture-loisirs/2026/07/01/marc-simeliere-expose-dans-le-nouveau-bistrot-chez-lulu" target="_blank" rel="noopener noreferrer" aria-label="Lire le reportage sur Marc Simelière au Chez Lulu dans Le Dauphiné Libéré">
-        <img className="pressPublisherLogo" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Logo_Journal_Le_Dauphin%C3%A9_Lib%C3%A9r%C3%A9_-_2022.svg" alt="Le Dauphiné Libéré" loading="lazy" width="240" height="43" />
+      <a className="pressBrandLink" href="https://www.ledauphine.com/culture-loisirs/2026/07/01/marc-simeliere-expose-dans-le-nouveau-bistrot-chez-lulu" target="_blank" rel="noopener noreferrer" aria-label="Lire l’article sur l’exposition de Marc Simelière dans Le Dauphiné Libéré">
+        <span className="pressDauphineLogo">Le Dauphiné <strong>Libéré</strong></span>
       </a>
-      <span className="pressSource">Le Dauphiné Libéré · 1er juillet 2026</span>
-      <h3>Marc Simelière expose dans le nouveau bistrot Chez Lulu</h3>
-      <p className="pressHighlight">Une exposition de Marc Simelière pour inaugurer la rencontre entre cuisine et création chez Lulu.</p>
-      <a className="pressReadMore" href="https://www.ledauphine.com/culture-loisirs/2026/07/01/marc-simeliere-expose-dans-le-nouveau-bistrot-chez-lulu" target="_blank" rel="noopener noreferrer">Lire l’article original ↗</a>
+      <blockquote>« Marc Simelière expose dans le nouveau bistrot Chez Lulu »</blockquote>
     </article>
   </div>
 </section>
