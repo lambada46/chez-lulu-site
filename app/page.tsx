@@ -59,7 +59,7 @@ export default function Home(){return <>
       <a className="pressBrandLink" href="https://www.avignon.fr/fileadmin/actualites/Documents/2026/11_novembre/Kiosque/Avignons_108_p1_p32-DP1.pdf#page=20" target="_blank" rel="noopener noreferrer" aria-label="Lire la publication du magazine Avignon(s)">
         <span className="pressMagazineLogo">avignon<span>(s)</span></span>
       </a>
-      <blockquote>« Quoi de neuf dans nos commerces ? »</blockquote>
+      <blockquote>« … un espace cocon et gourmand qui accueille aussi des expositions »</blockquote>
     </article>
     <article className="pressArticle">
       <a className="pressBrandLink" href="https://www.ledauphine.com/economie/2026/07/03/chez-lulu-un-nouveau-bistrot-en-ville-faute-de-buvette-au-rocher-des-doms" target="_blank" rel="noopener noreferrer" aria-label="Lire l’article sur Chez Lulu dans Le Dauphiné Libéré">
