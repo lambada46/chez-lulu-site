@@ -588,3 +588,35 @@ footer a { color: inherit; text-underline-offset: 4px; }
   .header { padding-inline:4%; gap:6px; }
   .header .reserve { font-size:.72rem; padding-inline:9px; }
 }
+
+/* Final mobile header: only brand and menu toggle in the top bar. */
+.mobileReserve { display: none; }
+@media (max-width: 850px) {
+  .header {
+    grid-template-columns: minmax(0, 1fr) 44px;
+    grid-template-rows: auto;
+    min-height: 64px;
+    padding: 10px 6%;
+    gap: 12px;
+  }
+  .header .logo { grid-column: 1; grid-row: 1; font-size: clamp(1.12rem, 4.6vw, 1.45rem); }
+  .header .menuToggle { grid-column: 2; grid-row: 1; }
+  .header > .languageSwitcher,
+  .header > .desktopReserve { display: none; }
+  .header .mainNavigation .mobileReserve {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0 4px;
+    padding: 12px 14px;
+    min-height: 44px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border: 0;
+  }
+  .header .mainNavigation .mobileReserve + .mobileLanguages {
+    margin-top: 12px;
+  }
+}
