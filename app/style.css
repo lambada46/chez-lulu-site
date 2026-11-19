@@ -620,3 +620,18 @@ footer a { color: inherit; text-underline-offset: 4px; }
     margin-top: 12px;
   }
 }
+
+/* Editorial imagery: authentic Chez Lulu dishes */
+.introGallery { position:relative; min-width:0; min-height:clamp(370px,47vw,560px); }
+.introGallery > .photo:first-child { width:78%; height:clamp(350px,42vw,510px); }
+.introGallery .introPinsa { position:absolute; width:46%; height:clamp(220px,29vw,350px); right:0; bottom:0; border:8px solid var(--paper); }
+.introGallery .photo img { object-fit:cover; object-position:center 48%; }
+.introGallery .introPinsa img { object-position:center 54%; }
+.story > .photo img { object-position:center 48%; }
+.intro .sectionText p { max-width:33ch; }
+@media(max-width:850px) {
+  .introGallery { min-height:0; aspect-ratio:1 / 1.05; }
+  .section .introGallery > .photo:first-child { width:78%; height:86%; aspect-ratio:auto; max-height:none; }
+  .section .introGallery .introPinsa { width:47%; height:60%; aspect-ratio:auto; max-height:none; right:0; bottom:0; border-width:5px; }
+  .section .introGallery:not(:has(.introPinsa)) > .photo:first-child { width:100%; height:100%; }
+}
