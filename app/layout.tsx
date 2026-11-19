@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   title: 'Chez Lulu | Café-bistrot à Avignon',
   description: 'Chez Lulu — La Provence, sans cérémonie. Café-bistrot à Avignon.',
   alternates: { languages: alternativeLanguages() },
+  icons: {
+    icon: [
+      { url: '/favicon.ico?v=2', sizes: 'any' },
+      { url: '/favicon-32x32.png?v=2', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png?v=2', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: [{ url: '/apple-icon.png?v=2', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/favicon.ico?v=2',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
