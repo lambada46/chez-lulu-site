@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Header from './header';
-import { phoneHref, siteUrl, instagramHref } from './site';
+import { siteUrl, instagramHref } from './site';
 import './style.css';
 import { alternativeLanguages } from './i18n';
 
@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr">
       <body>
-        <Header phoneHref={phoneHref} />
+        <Header />
         {children}
         <footer>
           <strong>CHEZ LULU</strong>
