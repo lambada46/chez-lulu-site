@@ -9,6 +9,9 @@ export default function Header({ phoneHref }: { phoneHref?: string }) {
   return (
     <header
       className="header"
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false);
+      }}
       onKeyDown={(event) => {
         if (event.key === 'Escape' && menuOpen && menuButton.current?.getClientRects().length) {
           event.preventDefault();
