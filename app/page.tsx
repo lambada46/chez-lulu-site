@@ -71,7 +71,7 @@ export default function Home(){return <>
       </a>
       <span className="pressSource">Le Dauphiné Libéré · 3 juillet 2026</span>
       <h3>Chez Lulu, un nouveau bistrot en ville ouvert par les gérants de Mamma Corsica</h3>
-      <blockquote>« Le nouveau bistrot convivial du centre-ville pour se sentir comme chez soi. »</blockquote>
+      <blockquote>« nouveau bistrot convivial du centre-ville pour se sentir comme chez soi »</blockquote>
       <a className="pressReadMore" href="https://www.ledauphine.com/economie/2026/07/03/chez-lulu-un-nouveau-bistrot-en-ville-faute-de-buvette-au-rocher-des-doms" target="_blank" rel="noopener noreferrer">Lire l’article original ↗</a>
     </article>
     <article className="pressArticle">
