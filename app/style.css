@@ -568,3 +568,5 @@ footer a { color: inherit; text-underline-offset: 4px; }
   .header .languageSwitcher { grid-column:1 / -1; grid-row:2; justify-content:flex-end; padding-top:1px; }
   .header .languageSwitcher a { min-height:34px; }
 }
+
+.header nav.languageSwitcher { gap:3px; }
