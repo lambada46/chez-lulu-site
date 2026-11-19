@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { phone, phoneHref } from './site';
@@ -7,12 +9,20 @@ export const metadata: Metadata = {
 };
 
 const address = process.env.NEXT_PUBLIC_RESTAURANT_ADDRESS || '';
+const desktopHero = '/images/hero-desktop.png';
+const mobileHero = '/images/hero-mobile.png';
+const desktopHeroSource = existsSync(join(process.cwd(), 'public', desktopHero))
+  ? desktopHero
+  : '/images/facade.jpg';
+const hasMobileHero = existsSync(join(process.cwd(), 'public', mobileHero));
+
 export default function Home(){return <>
 <main id="accueil" tabIndex={-1}>
 <section className="hero">
-  <div className="heroPhoto">
-    <Image src="/images/facade.jpg" alt="La terrasse du Chez Lulu à Avignon, le soir" fill priority sizes="100vw" />
-  </div>
+  <picture className="heroPhoto">
+    {hasMobileHero && <source media="(max-width: 850px)" srcSet={mobileHero} />}
+    <img src={desktopHeroSource} alt="La terrasse du Chez Lulu à Avignon, le soir" fetchPriority="high" />
+  </picture>
   <div className="heroContent">
     <span className="eyebrow">CAFÉ–BISTROT · AVIGNON</span>
     <h1>La Provence,<br />sans cérémonie.</h1>
