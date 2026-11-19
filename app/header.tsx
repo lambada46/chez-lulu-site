@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { type Locale, isForeignLocale, localizedHref, texts } from './i18n';
 
-export default function Header({ phoneHref }: { phoneHref?: string }) {
+export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const prefix = pathname.split('/')[1] || '';
@@ -13,6 +13,7 @@ export default function Header({ phoneHref }: { phoneHref?: string }) {
   useEffect(() => { document.documentElement.lang = locale; }, [locale]);
   const homeHref = localizedHref(locale);
   const menuHref = localizedHref(locale, 'carte');
+  const reservationHref = homeHref + '#infos';
   const navLabels = locale === 'fr' ? ['La carte','Notre histoire','Exposition','Boutique','Dans la presse','Nous trouver'] : [...texts[locale].nav];
   const navDestinations = [menuHref,homeHref+'#histoire',homeHref+'#expo',homeHref+'#boutique',homeHref+'#presse',homeHref+'#infos'];
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -48,22 +49,23 @@ export default function Header({ phoneHref }: { phoneHref?: string }) {
         </svg>
       </button>
       <nav id="site-navigation" className="mainNavigation" aria-label="Navigation principale" data-open={menuOpen}>
-        {navLabels.map((label,index)=><a href={navDestinations[index]} key={label} onClick={()=>setMenuOpen(false)}>{label}</a>)}
+        {navLabels.map((label,index)=>(
+          <a href={navDestinations[index]} key={label} onClick={()=>setMenuOpen(false)}>{label}</a>
+        ))}
+        <div className="mobileLanguages" aria-label="Language / Langue">
+          {(['fr','en','es','it'] as const).map(lang => (
+            <a key={lang} href={localizedHref(lang, isMenu ? 'carte' : '')} hrefLang={lang} lang={lang} aria-current={locale === lang ? 'page' : undefined}>{lang.toUpperCase()}</a>
+          ))}
+        </div>
       </nav>
       <nav className="languageSwitcher" aria-label="Language / Langue">
         {(['fr','en','es','it'] as const).map(lang => (
           <a key={lang} href={localizedHref(lang, isMenu ? 'carte' : '')} hrefLang={lang} lang={lang} aria-current={locale === lang ? 'page' : undefined}>{lang.toUpperCase()}</a>
         ))}
       </nav>
-      {phoneHref ? (
-        <a className="reserve" href={phoneHref} aria-label="Appeler pour réserver">
-          {locale === 'fr' ? 'Réserver' : texts[locale].reserve} ↗
-        </a>
-      ) : (
-        <button type="button" className="reserve disabled" disabled aria-label="Téléphone à renseigner">
-          Téléphone à renseigner
-        </button>
-      )}
+      <a className="reserve" href={reservationHref} onClick={() => setMenuOpen(false)}>
+        {locale === 'fr' ? 'Réserver' : texts[locale].reserve} <span aria-hidden="true">↗</span>
+      </a>
     </header>
   );
 }
