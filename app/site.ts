@@ -3,7 +3,7 @@ export const siteUrl = new URL('https://chez-lulu.fr');
 export const phone = '+33 6 63 23 64 86';
 export const phoneHref = 'tel:+33663236486';
 export const address = '42 Rue Carnot, Avignon, France';
-export const mapsHref = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address);
+export const mapsHref = 'https://share.google/8RzeyUzkU5rWGT882';
 
 export const openingHours = [
   { day: 'Lundi', hours: '10h–16h' },
