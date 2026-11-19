@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { notFound } from 'next/navigation';
 import { address, instagramHref, mapsHref, openingHours, phone, phoneHref } from '../site';
 import { alternativeLanguages, foreignLocales, isForeignLocale, texts } from '../i18n';
@@ -18,14 +20,26 @@ export default async function LocalizedHome({params}:{params:Promise<{locale:str
  const t=texts[locale];
  const days=openingHours.map((v,i)=>({day:t.days[i],hours:v.hours==='Fermé'?t.closed:v.hours}));
  const menuHref=`/${locale}/carte`;
+ const magretPhoto = existsSync(join(process.cwd(), 'public/images/chez-lulu-magret.jpg')) ? '/images/chez-lulu-magret.jpg' : '/images/brandade.jpg';
+ const planchePhoto = existsSync(join(process.cwd(), 'public/images/chez-lulu-planche.jpg')) ? '/images/chez-lulu-planche.jpg' : '/images/terrasse.jpg';
+ const hasPinsaPhoto = existsSync(join(process.cwd(), 'public/images/chez-lulu-daube-pinsa.jpg'));
  return <main id="accueil" tabIndex={-1} lang={locale}>
    <section className="hero">
      <picture className="heroPhoto"><source media="(max-width: 850px)" srcSet="/images/hero-mobile.png"/><img src="/images/hero-desktop.png" alt="Chez Lulu, café-bistrot in Avignon" fetchPriority="high"/></picture>
      <div className="heroContent"><span className="eyebrow">CHEZ LULU · AVIGNON</span><h1>{t.slogan}</h1><p>{t.hero}</p><a className="lightButton" href={menuHref}>{t.viewMenu}</a></div>
    </section>
-   <section className="section intro" id="carte"><div className="sectionText"><span className="eyebrow">01 / {t.atTable}</span><h2>{t.simply}</h2><p>{t.intro}</p><a className="textLink" href={menuHref}>{t.viewMenu}</a></div><div className="photo"><Image src="/images/brandade.jpg" alt="Chez Lulu's brandade" fill sizes="(max-width: 850px) 88vw, 46vw"/></div></section>
-   <section className="section story" id="histoire"><div className="photo"><Image src="/images/terrasse.jpg" alt="Terrace at Chez Lulu" fill sizes="(max-width: 850px) 88vw, 46vw"/></div><div className="sectionText"><span className="eyebrow">02 / {t.spirit}</span><h2>{t.storyTitle}</h2><p>{t.story1}</p><p>{t.story2}</p><p>{t.story3}</p></div></section>
-   <section className="section exhibit compactSection" id="expo"><div className="exhibitInner"><span className="eyebrow">03 / {t.now}</span><h2>MAT GM<br/><span className="exhibitSubtitle">{t.exhibit}</span></h2><p className="exhibitDates">{t.dates}</p><p>{t.exhibitText}</p><p className="exhibitEvent">{t.vernissage}</p><a className="textLink" href={instagramHref} target="_blank" rel="noopener noreferrer">{t.instagram} ↗</a></div></section>
+   <section className="section intro" id="carte">
+     <div className="sectionText"><span className="eyebrow">01 / {t.atTable}</span><h2>{t.simply}</h2><p>{t.intro}</p><a className="textLink" href={menuHref}>{t.viewMenu}</a></div>
+     <div className="introGallery">
+       <div className="photo"><Image src={magretPhoto} alt="Duck magret served at Chez Lulu" fill sizes="(max-width: 850px) 90vw, 36vw"/></div>
+       {hasPinsaPhoto && <div className="photo introPinsa"><Image src="/images/chez-lulu-daube-pinsa.jpg" alt="Daube pinsa with salad served at Chez Lulu" fill sizes="(max-width: 850px) 45vw, 20vw"/></div>}
+     </div>
+   </section>
+   <section className="section story" id="histoire">
+     <div className="photo"><Image src={planchePhoto} alt="Charcuterie board and wine at Chez Lulu" fill sizes="(max-width: 850px) 88vw, 46vw"/></div>
+     <div className="sectionText"><span className="eyebrow">02 / {t.spirit}</span><h2>{t.storyTitle}</h2><p>{t.story1}</p></div>
+   </section>
+   <section className="section exhibit compactSection" id="expo"><div className="exhibitInner"><span className="eyebrow">03 / {t.now}</span><h2>MAT GM<br/><span className="exhibitSubtitle">{t.exhibit}</span></h2><p className="exhibitDates">{t.dates}</p><p className="exhibitEvent">{t.vernissage}</p><a className="textLink" href={instagramHref} target="_blank" rel="noopener noreferrer">{t.instagram} ↗</a></div></section>
    <section className="section shop compactSection" id="boutique"><div><span className="eyebrow">04 / {t.shop}</span><h2>{t.shopTitle}</h2><p>{t.shopText}</p><span className="smallNote">{t.shopNote}</span></div></section>
    <section className="press" id="presse"><span className="eyebrow">05 / {t.press}</span><h2>{t.pressTitle}</h2><div className="pressArticles">
      <article className="pressArticle"><a className="pressBrandLink" href="https://www.avignon.fr/fileadmin/actualites/Documents/2026/11_novembre/Kiosque/Avignons_108_p1_p32-DP1.pdf#page=20" target="_blank" rel="noopener noreferrer" aria-label="Avignon(s), original article"><span className="pressMagazineLogo">avignon<span>(s)</span></span></a><blockquote lang="fr">« … un espace cocon et gourmand qui accueille aussi des expositions »</blockquote></article>
