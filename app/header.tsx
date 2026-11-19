@@ -52,6 +52,9 @@ export default function Header() {
         {navLabels.map((label,index)=>(
           <a href={navDestinations[index]} key={label} onClick={()=>setMenuOpen(false)}>{label}</a>
         ))}
+        <a className="mobileReserve" href={reservationHref} onClick={() => setMenuOpen(false)}>
+          {locale === 'fr' ? 'Réserver' : texts[locale].reserve} <span aria-hidden="true">↗</span>
+        </a>
         <div className="mobileLanguages" aria-label="Language / Langue">
           {(['fr','en','es','it'] as const).map(lang => (
             <a key={lang} href={localizedHref(lang, isMenu ? 'carte' : '')} hrefLang={lang} lang={lang} aria-current={locale === lang ? 'page' : undefined}>{lang.toUpperCase()}</a>
@@ -63,7 +66,7 @@ export default function Header() {
           <a key={lang} href={localizedHref(lang, isMenu ? 'carte' : '')} hrefLang={lang} lang={lang} aria-current={locale === lang ? 'page' : undefined}>{lang.toUpperCase()}</a>
         ))}
       </nav>
-      <a className="reserve" href={reservationHref} onClick={() => setMenuOpen(false)}>
+      <a className="reserve desktopReserve" href={reservationHref} onClick={() => setMenuOpen(false)}>
         {locale === 'fr' ? 'Réserver' : texts[locale].reserve} <span aria-hidden="true">↗</span>
       </a>
     </header>
