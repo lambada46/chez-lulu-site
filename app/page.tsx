@@ -60,7 +60,7 @@ export default function Home(){return <>
 </div>
 <div className="faq">
   <h3>Questions fréquentes</h3>
-  <details><summary>Où se garer ?</summary><p>Retrouvez les parkings du centre-ville et l’itinéraire vers le restaurant sur <a href={mapsHref} target="_blank" rel="noopener noreferrer">Google Maps</a>.</p></details>
+  <details><summary>Où se garer ?</summary><p>Le parking des Halles est le plus pratique pour venir chez Lulu, à environ 3 minutes à pied du restaurant. <a href="https://www.google.com/maps/search/?api=1&query=Parking+des+Halles+Avignon" target="_blank" rel="noopener noreferrer">Voir le parking sur Google Maps ↗</a></p></details>
   <details><summary>Faut-il réserver ?</summary><p>Pour réserver une table, appelez-nous au <a href={phoneHref}>{phone}</a>.</p></details>
   <details><summary>Proposez-vous des plats végétariens ?</summary><p>Oui, notre carte comprend des propositions végétariennes. <a href="/carte">Consultez la carte</a> pour les plats du moment.</p></details>
   <details><summary>Où se trouve Chez Lulu ?</summary><p>Au 42 rue Carnot, dans le centre d’Avignon. <a href={mapsHref} target="_blank" rel="noopener noreferrer">Préparer votre itinéraire</a>.</p></details>
