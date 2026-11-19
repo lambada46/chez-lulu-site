@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import Header from './header';
 import { phoneHref, siteUrl, instagramHref } from './site';
 import './style.css';
+import { alternativeLanguages } from './i18n';
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: 'Chez Lulu | Café-bistrot à Avignon',
   description: 'Chez Lulu — La Provence, sans cérémonie. Café-bistrot à Avignon.',
+  alternates: { languages: alternativeLanguages() },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
