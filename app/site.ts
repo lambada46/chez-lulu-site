@@ -14,3 +14,5 @@ export const openingHours = [
   { day: 'Samedi', hours: '10h–23h' },
   { day: 'Dimanche', hours: '10h–16h' },
 ] as const;
+
+export const instagramHref = 'https://www.instagram.com/chezluluavignon/';
