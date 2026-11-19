@@ -513,3 +513,10 @@ footer strong {
 .openingHours dt { font-weight: 500; }
 .openingHours dd { margin: 0; font-variant-numeric: tabular-nums; text-align: right; }
 footer a { color: inherit; text-underline-offset: 4px; }
+
+/* Current exhibition */
+.exhibitInner { max-width: 43rem; margin-inline: auto; }
+.exhibitSubtitle { font-size: clamp(1.4rem, 2.5vw, 2.3rem); color: #615d56; letter-spacing: -.03em; }
+.exhibitDates { font-weight: 600; color: var(--accent); }
+.exhibitEvent { margin-top: 22px; }
+.exhibit .textLink { margin-top: 12px; }
