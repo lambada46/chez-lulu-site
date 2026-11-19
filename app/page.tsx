@@ -40,7 +40,16 @@ export default function Home(){return <>
   <p>À Avignon, la Provence se vit ici sans cérémonie.</p>
 </div>
 </section>
-<section className="section exhibit compactSection" id="expo" tabIndex={-1}><div><span className="eyebrow">03 / EN CE MOMENT</span><h2>De l’art<br/>chez Lulu.</h2><p>Les murs du bistrot accueillent régulièrement des artistes. Découvrez bientôt l’exposition du moment.</p><span className="smallNote">Artiste, œuvres et dates à confirmer</span></div></section>
+<section className="section exhibit compactSection" id="expo" tabIndex={-1} aria-labelledby="expo-title">
+<div className="exhibitInner">
+  <span className="eyebrow">03 / EN CE MOMENT</span>
+  <h2 id="expo-title">MAT GM<br/><span className="exhibitSubtitle">Exposition de peintures</span></h2>
+  <p className="exhibitDates">Du 20 novembre 2026 au 7 février 2027</p>
+  <p>Chez Lulu accueille les peintures de MAT GM. Une nouvelle occasion de découvrir un univers artistique autour d’un café, d’un déjeuner ou d’un verre.</p>
+  <p className="exhibitEvent"><strong>Vernissage</strong> · Vendredi 4 décembre 2026 à 18h</p>
+  <a className="textLink" href="https://www.instagram.com/chezluluavignon/" target="_blank" rel="noopener noreferrer">Suivre les expositions sur Instagram ↗</a>
+</div>
+</section>
 <section className="section shop compactSection" id="boutique" tabIndex={-1}><div><span className="eyebrow">04 / LA BOUTIQUE</span><h2>Un peu de Lulu<br/>chez vous.</h2><p>Objets, textiles et petites idées à emporter. Une première sélection arrive bientôt.</p><span className="smallNote">Boutique MVP · produits et prix à confirmer</span></div></section>
 <section className="press"><span className="eyebrow">05 / ON PARLE DE NOUS</span><h2>On parle de nous.</h2><p>Les articles et leurs liens seront ajoutés après vérification.</p></section>
 <section className="section location" id="infos" tabIndex={-1}>
