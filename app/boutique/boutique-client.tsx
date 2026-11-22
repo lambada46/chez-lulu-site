@@ -19,9 +19,11 @@ function analytics(product:Product,action:'view'|'interest'|'lead'){
 }
 
 function ProductVisual({product}:{product:Product}){
- const [failed,setFailed]=useState(false);
+ const [shownImage,setShownImage]=useState(product.image);
  return <div className="boutiquePhoto" style={{background:product.color}}>
-   {product.image&&!failed?<img src={product.image} alt={product.name+' — Chez Lulu'} loading="lazy" onError={()=>setFailed(true)}/>:<div className={'boutiqueImagePlaceholder '+(product.id==='lulu-cest-vous'?'pending':'')} aria-label={'Visuel de '+product.name+' à venir'}><span>CHEZ LULU</span><small>AVIGNON · 2026</small></div>}
+   {shownImage
+     ? <img key={shownImage} src={shownImage} alt={product.name+' — Chez Lulu'} loading="lazy" onError={()=>setShownImage(current=>current===product.image?product.fallbackImage:undefined)}/>
+     : <div className="boutiqueImagePlaceholder" aria-label={'Visuel de '+product.name+' à venir'}><span>CHEZ LULU</span><small>AVIGNON · 2026</small></div>}
  </div>;
 }
 export default function Boutique(){
