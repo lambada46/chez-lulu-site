@@ -66,7 +66,6 @@ export default function Boutique(){
   <div className="boutiqueMasthead">
     <span className="boutiqueEdition">COLLECTION INAUGURALE <span aria-hidden="true">·</span> Nº 001 <span aria-hidden="true">·</span> AVIGNON 2026</span>
     <h1>La boutique</h1>
-    <p className="boutiqueTagline">Les premiers souvenirs d’un lieu qui ne fait que commencer.</p>
     <div className="boutiqueFilters" role="group" aria-label="Catégories de la collection">
       {categories.map(cat=><button key={cat.id} type="button" className={cat.id===filter?'active':''} aria-pressed={cat.id===filter} onClick={()=>setFilter(cat.id)}>{cat.label}</button>)}
     </div>
@@ -75,7 +74,6 @@ export default function Boutique(){
    {products.filter(p=>filter==='all'||p.category===filter).map((p)=><article className="boutiqueProduct" key={p.id} data-product-id={p.id}>
      <button type="button" className="boutiqueProductImageButton" onClick={()=>selectProduct(p)} aria-label={'Découvrir '+p.name}><ProductVisual product={p}/></button>
      <div className="boutiqueProductInfo"><h2>{p.name}</h2><span>{euro(p.price)}</span></div>
-     <p className="boutiqueProductDescription">{p.description}</p>
      <button className="boutiqueNotify" onClick={()=>selectProduct(p)}>Me prévenir <span aria-hidden="true">↗</span></button>
     </article>)}
   </section>
