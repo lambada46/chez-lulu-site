@@ -1,6 +1,6 @@
 interface Env { BOUTIQUE_DB?: D1Database }
 interface D1Database { prepare(query:string):{bind(...values:unknown[]):{run():Promise<unknown>}} }
-const validProducts=new Set(['lulu-cest-vous','daube','tout-au-fond','facade','cest-qui-lulu','lu-plus-lu','creme-brulee','tablier','torchon','tote-bag']);
+const validProducts=new Set(['lulu-cest-vous','daube','tout-au-fond','facade','cest-qui-lulu','lu-plus-lu','creme-brulee','tablier','torchon-rouge','torchon-bleu','torchon-carreaux','torchon-pois','torchon-minimal','tote-bag']);
 export const onRequestPost=async({request,env}:{request:Request,env:Env}):Promise<Response>=>{
  if(!env.BOUTIQUE_DB)return new Response(null,{status:503});
  let data:Record<string,unknown>;
