@@ -11,7 +11,7 @@ const categories = [
 ] as const;
 type Category = (typeof categories)[number]['id'];
 
-function analytics(product:Product,action:'view'|'interest'){
+function analytics(product:Product,action:'view'|'interest'|'lead'){
   if(typeof window==='undefined') return;
   const body=JSON.stringify({product_id:product.id,event:action,path:window.location.pathname,source:new URLSearchParams(window.location.search).get('utm_source')||''});
   // Anonymous events need a Cloudflare D1 database binding, configured separately.
@@ -26,6 +26,22 @@ function ProductVisual({product}:{product:Product}){
 }
 export default function Boutique(){
  const [filter,setFilter]=useState<Category>('all');
+ useEffect(()=>{
+   if(typeof IntersectionObserver==='undefined')return;
+   const viewed=new Set<string>();
+   const observer=new IntersectionObserver(entries=>{
+     for(const entry of entries){
+       if(!entry.isIntersecting)continue;
+       const id=(entry.target as HTMLElement).dataset.productId;
+       const product=products.find(p=>p.id===id);
+       if(!product||viewed.has(product.id))continue;
+       viewed.add(product.id);
+       analytics(product,'view');
+     }
+   },{threshold:.35});
+   document.querySelectorAll<HTMLElement>('.boutiqueProduct[data-product-id]').forEach(node=>observer.observe(node));
+   return()=>observer.disconnect();
+ },[filter]);
  const [selected,setSelected]=useState<Product|null>(null);
  const [email,setEmail]=useState('');
  const [size,setSize]=useState('');
@@ -42,27 +58,28 @@ export default function Boutique(){
    try{
      const res=await fetch('/api/interest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product_id:selected.id,email,size:size||null,consent:true,source:new URLSearchParams(window.location.search).get('utm_source')||'',page:window.location.pathname})});
      if(!res.ok)throw Error('Le service est temporairement indisponible.');
+     analytics(selected,'lead');
      setStatus('sent');
    }catch{setStatus('error');setNotice('L’inscription n’est pas encore disponible. Réessayez plus tard.');}
  }
  return <main className="boutiquePage" id="boutique-top">
   <div className="boutiqueMasthead">
-    <span className="boutiqueEdition">ÉDITION Nº 001 <span aria-hidden="true">·</span> AVIGNON <span aria-hidden="true">·</span> 2026</span>
+    <span className="boutiqueEdition">COLLECTION INAUGURALE <span aria-hidden="true">·</span> Nº 001 <span aria-hidden="true">·</span> AVIGNON 2026</span>
     <h1>La boutique</h1>
-    <p className="boutiqueTagline">Les premières choses qu’on emporte de chez Lulu.</p>
+    <p className="boutiqueTagline">Les premiers souvenirs d’un lieu qui ne fait que commencer.</p>
     <div className="boutiqueFilters" role="group" aria-label="Catégories de la collection">
       {categories.map(cat=><button key={cat.id} type="button" className={cat.id===filter?'active':''} aria-pressed={cat.id===filter} onClick={()=>setFilter(cat.id)}>{cat.label}</button>)}
     </div>
   </div>
   <section className="boutiqueProducts" aria-label="Collection inaugurale 2026">
-   {products.filter(p=>filter==='all'||p.category===filter).map((p)=><article className="boutiqueProduct" key={p.id}>
+   {products.filter(p=>filter==='all'||p.category===filter).map((p)=><article className="boutiqueProduct" key={p.id} data-product-id={p.id}>
      <button type="button" className="boutiqueProductImageButton" onClick={()=>selectProduct(p)} aria-label={'Découvrir '+p.name}><ProductVisual product={p}/></button>
      <div className="boutiqueProductInfo"><h2>{p.name}</h2><span>{euro(p.price)}</span></div>
      <p className="boutiqueProductDescription">{p.description}</p>
      <button className="boutiqueNotify" onClick={()=>selectProduct(p)}>Me prévenir <span aria-hidden="true">↗</span></button>
     </article>)}
   </section>
-  <p className="boutiqueFootnote">Collection inaugurale 2026 · Pièces en préparation · Aucun achat ni paiement à ce stade.</p>
+  <p className="boutiqueFootnote">Collection inaugurale 2026 · Pièces en préparation, sans vente pour le moment.</p>
   {selected&&<div className="boutiqueOverlay" onMouseDown={e=>{if(e.target===e.currentTarget)setSelected(null)}}>
     <section className="boutiqueDialog" role="dialog" aria-modal="true" aria-labelledby="boutique-dialog-title">
       <button type="button" className="boutiqueClose" aria-label="Fermer" onClick={()=>setSelected(null)}>×</button>
