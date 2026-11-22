@@ -6,7 +6,7 @@ export const products: Product[] = [
  {id:'lulu-cest-vous',name:'Lulu, c’est vous',category:'tshirt',price:29.90,image:'/images/boutique/lulu-cest-vous.jpg',description:'L’emblème sur le cœur, le message dans le dos.',color:'#ebe6da'},
  {id:'daube',name:'Daube',category:'tshirt',price:29.90,image:'/images/boutique/daube.jpg',description:'Notre sandwich a du caractère.',color:'#ede4d5'},
  {id:'tout-au-fond',name:'Tout au fond à gauche',category:'tshirt',price:29.90,image:'/images/boutique/tout-au-fond.jpg',description:'Une phrase qui en dit long.',color:'#2b2b2a'},
- {id:'facade',name:'La façade',category:'tshirt',price:29.90,description:'Le coin de rue qui nous ressemble.',color:'#e6dfd2'},
+ {id:'facade',name:'La façade',category:'tshirt',price:29.90,image:'/images/boutique/facade.jpg',description:'Le coin de rue qui nous ressemble.',color:'#e6dfd2'},
  {id:'cest-qui-lulu',name:'C’est qui Lulu ?',category:'tshirt',price:29.90,image:'/images/boutique/cest-qui-lulu.jpg',description:'La question que tout le monde se pose.',color:'#efe7d9'},
  {id:'lu-plus-lu',name:'Lu + Lu = Lulu',category:'tshirt',price:29.90,image:'/images/boutique/lu-plus-lu.jpg',description:'Une équation à porter.',color:'#eee8df'},
  {id:'creme-brulee',name:'Crème brûlée universelle',category:'tshirt',price:29.90,image:'/images/boutique/creme-brulee.png',description:'Une autre planète, la même gourmandise.',color:'#22382f'},
