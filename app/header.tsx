@@ -15,7 +15,7 @@ export default function Header() {
   const menuHref = localizedHref(locale, 'carte');
   const reservationHref = homeHref + '#infos';
   const navLabels = locale === 'fr' ? ['La carte','Notre histoire','Exposition','Boutique','Dans la presse','Nous trouver'] : [...texts[locale].nav];
-  const navDestinations = [menuHref,homeHref+'#histoire',homeHref+'#expo',homeHref+'#boutique',homeHref+'#presse',homeHref+'#infos'];
+  const navDestinations = [menuHref,homeHref+'#histoire',homeHref+'#expo','/boutique',homeHref+'#presse',homeHref+'#infos'];
   const menuButton = useRef<HTMLButtonElement>(null);
 
   return (
