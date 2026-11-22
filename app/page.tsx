@@ -63,7 +63,7 @@ export default function Home(){return <>
   <a className="textLink" href="https://www.instagram.com/chezluluavignon/" target="_blank" rel="noopener noreferrer">Suivre les expositions sur Instagram ↗</a>
 </div>
 </section>
-<section className="section shop compactSection" id="boutique" tabIndex={-1}><div><span className="eyebrow">04 / LA BOUTIQUE</span><h2>Un peu de Lulu<br/>chez vous.</h2><p>Objets, textiles et petites idées à emporter. Une première sélection arrive bientôt.</p><span className="smallNote">À découvrir bientôt.</span></div></section>
+<section className="section shop compactSection" id="boutique" tabIndex={-1}><div><span className="eyebrow">04 / LA BOUTIQUE</span><h2>Un peu de Lulu<br/>chez vous.</h2><p>Les premières choses qu’on emporte de chez Lulu.</p><a className="textLink" href="/boutique">Découvrir la collection ↗</a></div></section>
 <section className="press" id="presse" aria-labelledby="press-title">
   <span className="eyebrow">05 / DANS LA PRESSE</span>
   <h2 id="press-title">On parle de nous.</h2>
