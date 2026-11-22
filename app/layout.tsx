@@ -10,11 +10,7 @@ export const metadata: Metadata = {
   description: 'Chez Lulu — La Provence, sans cérémonie. Café-bistrot à Avignon.',
   alternates: { languages: alternativeLanguages() },
   icons: {
-    icon: [
-      { url: '/lu-favicon.svg?v=3', type: 'image/svg+xml' },
-       
-       
-    ],
+    icon: [{ url: '/lu-favicon.svg?v=3', type: 'image/svg+xml' }],
     apple: [{ url: '/apple-icon.png?v=2', sizes: '180x180', type: 'image/png' }],
     shortcut: '/lu-favicon.svg?v=3',
   },
