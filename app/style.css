@@ -688,3 +688,13 @@ footer a { color: inherit; text-underline-offset: 4px; }
 .boutiqueError{color:#a1261c;font-size:.8rem}
 @media(max-width:850px){.boutiqueMasthead{padding:55px 5% 34px}.boutiqueProducts{grid-template-columns:repeat(2,minmax(0,1fr));gap:35px 12px;padding:0 5%}.boutiqueDialog{grid-template-columns:1fr;max-width:500px}.boutiqueDialogVisual{min-height:0;height:200px}.boutiqueDialogText{padding:24px}.boutiqueMasthead .boutiqueEdition:before,.boutiqueMasthead .boutiqueEdition:after{width:12px;margin:0 7px}}
 @media(max-width:480px){.boutiqueProductInfo{display:block}.boutiqueProductInfo h2{margin-bottom:5px}.boutiqueProductDescription{font-size:.75rem}.boutiqueNotify{font-size:.77rem}.boutiqueMasthead h1{font-size:3.25rem}.boutiqueDialogVisual{display:none}}
+
+/* Inaugural collection: an edition mark instead of explanatory marketing copy. */
+.boutiqueMasthead{padding-bottom:42px}
+.boutiqueMasthead .boutiqueEdition{font-size:clamp(.72rem,1.15vw,.94rem);letter-spacing:.19em;font-weight:700;padding:11px 0;border-top:1px solid var(--accent);border-bottom:1px solid var(--accent)}
+.boutiqueMasthead .boutiqueEdition:before,.boutiqueMasthead .boutiqueEdition:after{display:none}
+.boutiqueMasthead h1{margin:24px 0 36px}
+.boutiqueProductDescription{display:none}
+.boutiqueProductInfo{margin:14px 0 16px}
+.boutiqueProductInfo h2,.boutiquePage h1{font-family:Arial,Helvetica,sans-serif}
+@media(max-width:850px){.boutiqueMasthead h1{margin-bottom:29px}.boutiqueMasthead .boutiqueEdition{font-size:.7rem;letter-spacing:.12em}}
