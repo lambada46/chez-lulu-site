@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   alternates: { languages: alternativeLanguages() },
   icons: {
     icon: [
-      { url: '/favicon.ico?v=2', sizes: 'any' },
-      { url: '/favicon-32x32.png?v=2', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-16x16.png?v=2', type: 'image/png', sizes: '16x16' },
+      { url: '/lu-favicon.svg?v=3', type: 'image/svg+xml' },
+       
+       
     ],
     apple: [{ url: '/apple-icon.png?v=2', sizes: '180x180', type: 'image/png' }],
-    shortcut: '/favicon.ico?v=2',
+    shortcut: '/lu-favicon.svg?v=3',
   },
 };
 
