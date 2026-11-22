@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Header from './header';
-import { siteUrl, instagramHref } from './site';
+import { siteUrl, instagramHref, phone, openingHours } from './site';
 import './style.css';
 import { alternativeLanguages } from './i18n';
 
@@ -16,10 +16,46 @@ export const metadata: Metadata = {
   },
 };
 
+const restaurantStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  '@id': 'https://chez-lulu.fr/#restaurant',
+  name: 'Chez Lulu',
+  url: siteUrl.href,
+  description: 'Café-bistrot à Avignon. La Provence, sans cérémonie.',
+  image: new URL('/images/hero-desktop.png', siteUrl).href,
+  telephone: phone,
+  servesCuisine: 'Cuisine provençale et bistrot',
+  hasMenu: new URL('/carte', siteUrl).href,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '42 Rue Carnot',
+    addressLocality: 'Avignon',
+    postalCode: '84000',
+    addressCountry: 'FR',
+  },
+  sameAs: [instagramHref],
+  openingHoursSpecification: openingHours.flatMap(({day,hours}) => {
+    const days: Record<string,string> = {
+      Lundi: 'Monday', Mardi: 'Tuesday', Mercredi: 'Wednesday',
+      Jeudi: 'Thursday', Vendredi: 'Friday', Samedi: 'Saturday', Dimanche: 'Sunday',
+    };
+    if (hours === 'Fermé') return [];
+    const [opens,closes] = hours.split('–').map(value => value.replace('h', ':').padEnd(5, '0'));
+    return [{
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: days[day],
+      opens,
+      closes,
+    }];
+  }),
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantStructuredData).replace(/</g, '\\u003c') }} />
         <Header />
         {children}
         <footer>
