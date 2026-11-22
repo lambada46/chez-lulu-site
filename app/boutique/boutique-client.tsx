@@ -11,7 +11,7 @@ const categories = [
 ] as const;
 type Category = (typeof categories)[number]['id'];
 
-function analytics(product:Product,action:'view'|'interest'|'lead'){
+function analytics(product:Product,action:'view'|'interest'){
   if(typeof window==='undefined') return;
   const body=JSON.stringify({product_id:product.id,event:action,path:window.location.pathname,source:new URLSearchParams(window.location.search).get('utm_source')||''});
   // Anonymous events need a Cloudflare D1 database binding, configured separately.
@@ -29,21 +29,20 @@ export default function Boutique(){
  const [selected,setSelected]=useState<Product|null>(null);
  const [email,setEmail]=useState('');
  const [size,setSize]=useState('');
- const [agreed,setAgreed]=useState(false);
  const [status,setStatus]=useState<'idle'|'sending'|'sent'|'error'>('idle');
  const [notice,setNotice]=useState('');
  useEffect(()=>{ if(!selected)return; const key=(e:KeyboardEvent)=>{if(e.key==='Escape')setSelected(null)};document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key)},[selected]);
  function selectProduct(product:Product){
-   analytics(product,'interest'); setSelected(product);setEmail('');setSize('');setAgreed(false);setStatus('idle');setNotice('');
+   analytics(product,'interest'); setSelected(product);setEmail('');setSize('');setStatus('idle');setNotice('');
  }
  async function subscribe(e:React.FormEvent){
    e.preventDefault();
-   if(!selected || !agreed || status==='sending')return;
+   if(!selected || status==='sending')return;
    setStatus('sending');
    try{
      const res=await fetch('/api/interest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product_id:selected.id,email,size:size||null,consent:true,source:new URLSearchParams(window.location.search).get('utm_source')||'',page:window.location.pathname})});
      if(!res.ok)throw Error('Le service est temporairement indisponible.');
-     setStatus('sent');analytics(selected,'lead');
+     setStatus('sent');
    }catch{setStatus('error');setNotice('L’inscription n’est pas encore disponible. Réessayez plus tard.');}
  }
  return <main className="boutiquePage" id="boutique-top">
@@ -78,7 +77,7 @@ export default function Boutique(){
           <label htmlFor="boutique-email">Votre e-mail</label>
           <input required id="boutique-email" type="email" autoComplete="email" maxLength={254} value={email} onChange={e=>setEmail(e.target.value)} placeholder="vous@exemple.fr"/>
           {selected.category==='tshirt'&&<><label htmlFor="boutique-size">Taille souhaitée <span>(facultatif)</span></label><select id="boutique-size" value={size} onChange={e=>setSize(e.target.value)}><option value="">Je ne sais pas encore</option>{['S','M','L','XL','XXL'].map(v=><option key={v}>{v}</option>)}</select></>}
-          <label className="boutiqueConsent"><input type="checkbox" checked={agreed} onChange={e=>setAgreed(e.target.checked)} required/><span>J’accepte de recevoir un e-mail concernant la disponibilité de cet article. <small>Pas de newsletter. Désinscription sur simple demande.</small></span></label>
+          <p className="boutiquePrivacy">En demandant cette alerte, vous recevrez uniquement un e-mail sur cet article. Aucune newsletter.</p>
           <button type="submit" className="boutiqueNotify" disabled={status==='sending'}>{status==='sending'?'Envoi…':'M’avertir de sa sortie →'}</button>
           {status==='error'&&<p role="alert" className="boutiqueError">{notice}</p>}
         </form>
