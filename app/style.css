@@ -698,3 +698,26 @@ footer a { color: inherit; text-underline-offset: 4px; }
 .boutiqueProductInfo{margin:14px 0 16px}
 .boutiqueProductInfo h2,.boutiquePage h1{font-family:Arial,Helvetica,sans-serif}
 @media(max-width:850px){.boutiqueMasthead h1{margin-bottom:29px}.boutiqueMasthead .boutiqueEdition{font-size:.7rem;letter-spacing:.12em}}
+
+
+/* Collection 001 – editorial, photo-led home teaser */
+.shopPreview{padding:clamp(68px,9vw,124px) 7%;background:#eeeae2;overflow:hidden}
+.shopPreviewHeader{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:34px}
+.shopPreviewHeader h2{max-width:670px;font-weight:400;letter-spacing:-.055em;font-size:clamp(2.5rem,4.8vw,5.4rem);line-height:1.04;margin:15px 0 0}
+.shopPreviewHeader .eyebrow{color:var(--accent)}
+.shopPreviewLink,.shopPreviewMobileLink{text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:8px;font-size:.92rem;display:inline-flex;align-items:center;gap:28px;white-space:nowrap}
+.shopPreviewLink:hover,.shopPreviewMobileLink:hover{color:var(--accent)}
+.shopPreviewGallery{display:grid;grid-template-columns:1.42fr 1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:14px;aspect-ratio:2.4 / 1}
+.shopPreviewItem{position:relative;display:block;overflow:hidden;background:#d4c7b6;min-height:0}
+.shopPreviewItem:first-child{grid-row:span 2}
+.shopPreviewItem img{object-fit:cover;transition:transform .5s ease}
+.shopPreviewItem:hover img{transform:scale(1.055)}
+.shopPreviewItem::after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.shopPreviewItemLabel{position:absolute;bottom:15px;left:17px;right:10px;color:white;z-index:1;font-size:clamp(.78rem,1.25vw,1rem);font-weight:600}
+.shopPreviewItem:first-child .shopPreviewItemLabel{font-size:clamp(1.05rem,1.7vw,1.5rem);bottom:25px;left:24px}
+.shopPreviewMobileLink{display:none}
+footer a[aria-label="Chez Lulu sur Instagram"]{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:50%;transition:color .2s}
+footer a[aria-label="Chez Lulu sur Instagram"]:hover{color:#efc9bd}
+footer a[aria-label="Chez Lulu sur Instagram"]:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+@media(max-width:980px){.shopPreviewGallery{grid-template-columns:1.4fr 1fr;grid-template-rows:repeat(3,minmax(0,1fr));aspect-ratio:1.4/1}.shopPreviewItem:first-child{grid-row:span 3}.shopPreviewItem:last-child{display:none}}
+@media(max-width:680px){.shopPreview{padding:65px 0 66px}.shopPreviewHeader{padding:0 6%;margin-bottom:25px}.shopPreviewHeader h2{font-size:clamp(2.45rem,10vw,3.5rem);max-width:12ch}.shopPreviewLink{display:none}.shopPreviewGallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:6%;padding:0 6% 12px;aspect-ratio:auto;scrollbar-width:thin}.shopPreviewItem,.shopPreviewItem:first-child,.shopPreviewItem:last-child{display:block;flex:0 0 72%;height:auto;aspect-ratio:4/5;scroll-snap-align:start}.shopPreviewMobileLink{margin:23px 6% 0;display:inline-flex}}
