@@ -1,3 +1,4 @@
+import ShopPreview from './shop-preview';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Metadata } from 'next';
@@ -63,7 +64,7 @@ export default function Home(){return <>
   <a className="textLink" href="https://www.instagram.com/chezluluavignon/" target="_blank" rel="noopener noreferrer">Suivre les expositions sur Instagram ↗</a>
 </div>
 </section>
-<section className="section shop compactSection" id="boutique" tabIndex={-1}><div><span className="eyebrow">04 / LA BOUTIQUE</span><h2>Un peu de Lulu<br/>chez vous.</h2><p>Les premières choses qu’on emporte de chez Lulu.</p><a className="textLink" href="/boutique">Découvrir la collection ↗</a></div></section>
+<ShopPreview eyebrow="04 / BOUTIQUE · ÉDITION 001" title="Les premiers objets de la maison." cta="Découvrir la collection" />
 <section className="press" id="presse" aria-labelledby="press-title">
   <span className="eyebrow">05 / DANS LA PRESSE</span>
   <h2 id="press-title">On parle de nous.</h2>
