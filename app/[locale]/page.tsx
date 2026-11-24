@@ -1,3 +1,4 @@
+import ShopPreview from '../shop-preview';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { existsSync } from 'node:fs';
@@ -40,7 +41,7 @@ export default async function LocalizedHome({params}:{params:Promise<{locale:str
      <div className="sectionText"><span className="eyebrow">02 / {t.spirit}</span><h2>{t.storyTitle}</h2><p>{t.story1}</p></div>
    </section>
    <section className="section exhibit compactSection" id="expo"><div className="exhibitInner"><span className="eyebrow">03 / {t.now}</span><h2>MAT GM<br/><span className="exhibitSubtitle">{t.exhibit}</span></h2><p className="exhibitDates">{t.dates}</p><p className="exhibitEvent">{t.vernissage}</p><a className="textLink" href={instagramHref} target="_blank" rel="noopener noreferrer">{t.instagram} ↗</a></div></section>
-   <section className="section shop compactSection" id="boutique"><div><span className="eyebrow">04 / {t.shop}</span><h2>{t.shopTitle}</h2><p>{t.shopText}</p><span className="smallNote">{t.shopNote}</span></div></section>
+   <ShopPreview eyebrow={'04 / '+t.shop+' · ÉDITION 001'} title={t.shopTitle} cta={t.viewMenu==='Explore the menu'?'Discover the collection':locale==='es'?'Descubrir la colección':'Scopri la collezione'} />
    <section className="press" id="presse"><span className="eyebrow">05 / {t.press}</span><h2>{t.pressTitle}</h2><div className="pressArticles">
      <article className="pressArticle"><a className="pressBrandLink" href="https://www.avignon.fr/fileadmin/actualites/Documents/2026/11_novembre/Kiosque/Avignons_108_p1_p32-DP1.pdf#page=20" target="_blank" rel="noopener noreferrer" aria-label="Avignon(s), original article"><span className="pressMagazineLogo">avignon<span>(s)</span></span></a><blockquote lang="fr">« … un espace cocon et gourmand qui accueille aussi des expositions »</blockquote></article>
      <article className="pressArticle"><a className="pressBrandLink" href="https://www.ledauphine.com/economie/2026/07/03/chez-lulu-un-nouveau-bistrot-en-ville-faute-de-buvette-au-rocher-des-doms" target="_blank" rel="noopener noreferrer" aria-label="Le Dauphiné Libéré, original article"><span className="pressDauphineLogo">Le Dauphiné <strong>Libéré</strong></span></a><blockquote lang="fr">« nouveau bistrot convivial du centre-ville pour se sentir comme chez soi »</blockquote></article>
