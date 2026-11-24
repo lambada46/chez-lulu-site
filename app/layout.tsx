@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <strong>CHEZ LULU</strong>
           <span>La Provence, sans cérémonie.</span>
           <span>42 rue Carnot · Avignon</span>
-          <a href={instagramHref} target="_blank" rel="noopener noreferrer" aria-label="Chez Lulu sur Instagram">Instagram ↗</a>
+          <a href={instagramHref} target="_blank" rel="noopener noreferrer" aria-label="Chez Lulu sur Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a>
         </footer>
       </body>
     </html>
