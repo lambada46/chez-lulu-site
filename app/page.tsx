@@ -1,3 +1,4 @@
+import CurrentEvents from './current-events';
 import ShopPreview from './shop-preview';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -54,16 +55,7 @@ export default function Home(){return <>
     <p>Un café, un déjeuner, un verre entre amis. Une cuisine inspirée des traditions du Sud, de l’art sur les murs et le plaisir de se retrouver, sans cérémonie.</p>
   </div>
 </section>
-<section className="section exhibit compactSection" id="expo" tabIndex={-1} aria-labelledby="expo-title">
-<div className="exhibitInner">
-  <span className="eyebrow">03 / EN CE MOMENT</span>
-  <h2 id="expo-title">MAT GM<br/><span className="exhibitSubtitle">Exposition de peintures</span></h2>
-  <p className="exhibitDates">Du 20 novembre 2026 au 7 février 2027</p>
-  
-  <p className="exhibitEvent"><strong>Vernissage</strong> · Vendredi 4 décembre 2026 à 18h</p>
-  <a className="textLink" href="https://www.instagram.com/chezluluavignon/" target="_blank" rel="noopener noreferrer">Suivre les expositions sur Instagram ↗</a>
-</div>
-</section>
+<CurrentEvents locale="fr" />
 <ShopPreview eyebrow="04 / BOUTIQUE · ÉDITION 001" title="Les premiers objets de la maison." cta="Découvrir la collection" />
 <section className="press" id="presse" aria-labelledby="press-title">
   <span className="eyebrow">05 / DANS LA PRESSE</span>
