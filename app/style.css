@@ -710,6 +710,7 @@ footer a { color: inherit; text-underline-offset: 4px; }
 .shopPreviewGallery{display:grid;grid-template-columns:1.42fr 1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:14px;aspect-ratio:2.4 / 1}
 .shopPreviewItem{position:relative;display:block;overflow:hidden;background:#d4c7b6;min-height:0}
 .shopPreviewItem:first-child{grid-row:span 2}
+.shopPreviewItem:last-child{grid-column:span 2}
 .shopPreviewItem img{object-fit:cover;transition:transform .5s ease}
 .shopPreviewItem:hover img{transform:scale(1.055)}
 .shopPreviewItem::after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.6))}
@@ -719,5 +720,5 @@ footer a { color: inherit; text-underline-offset: 4px; }
 footer a[aria-label="Chez Lulu sur Instagram"]{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:50%;transition:color .2s}
 footer a[aria-label="Chez Lulu sur Instagram"]:hover{color:#efc9bd}
 footer a[aria-label="Chez Lulu sur Instagram"]:focus-visible{outline:2px solid currentColor;outline-offset:4px}
-@media(max-width:980px){.shopPreviewGallery{grid-template-columns:1.4fr 1fr;grid-template-rows:repeat(3,minmax(0,1fr));aspect-ratio:1.4/1}.shopPreviewItem:first-child{grid-row:span 3}.shopPreviewItem:last-child{display:none}}
-@media(max-width:680px){.shopPreview{padding:65px 0 66px}.shopPreviewHeader{padding:0 6%;margin-bottom:25px}.shopPreviewHeader h2{font-size:clamp(2.45rem,10vw,3.5rem);max-width:12ch}.shopPreviewLink{display:none}.shopPreviewGallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:6%;padding:0 6% 12px;aspect-ratio:auto;scrollbar-width:thin}.shopPreviewItem,.shopPreviewItem:first-child,.shopPreviewItem:last-child{display:block;flex:0 0 72%;height:auto;aspect-ratio:4/5;scroll-snap-align:start}.shopPreviewMobileLink{margin:23px 6% 0;display:inline-flex}}
+@media(max-width:980px){.shopPreviewGallery{grid-template-columns:1.4fr 1fr;grid-template-rows:repeat(3,minmax(0,1fr));aspect-ratio:1.4/1}.shopPreviewItem:first-child{grid-row:span 3}.shopPreviewItem:last-child{display:none;grid-column:auto}}
+@media(max-width:680px){.shopPreview{padding:65px 0 66px}.shopPreviewHeader{padding:0 6%;margin-bottom:25px}.shopPreviewHeader h2{font-size:clamp(2.45rem,10vw,3.5rem);max-width:12ch}.shopPreviewLink{display:none}.shopPreviewGallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:6%;padding:0 6% 12px;aspect-ratio:auto;scrollbar-width:thin}.shopPreviewItem,.shopPreviewItem:first-child,.shopPreviewItem:last-child{display:block;flex:0 0 72%;height:auto;aspect-ratio:4/5;scroll-snap-align:start;grid-column:auto;grid-row:auto}.shopPreviewMobileLink{margin:23px 6% 0;display:inline-flex}}
