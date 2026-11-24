@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import type { Locale } from './i18n';
 
 const copy = {
@@ -59,6 +61,9 @@ const copy = {
   },
 } as const;
 
+const exhibitionPhoto = '/images/exposition-mat-gm.jpg';
+const hasExhibitionPhoto = existsSync(join(process.cwd(), 'public', 'images', 'exposition-mat-gm.jpg'));
+
 export default function CurrentEvents({ locale = 'fr' }: { locale?: Locale }) {
   const t = copy[locale];
 
@@ -77,13 +82,26 @@ export default function CurrentEvents({ locale = 'fr' }: { locale?: Locale }) {
           <p className="currentEventAccess">{t.marketAccess}</p>
           <span className="currentEventLocation">CHEZ LULU · 42 RUE CARNOT · AVIGNON</span>
         </article>
-        <article className="currentEventCard currentEventExhibition">
-          <span className="currentEventCategory">{t.exhibitionType}</span>
-          <h3>{t.exhibitionTitle}</h3>
-          <p className="currentEventSubtitle">{t.exhibitionSubtitle}</p>
-          <p className="currentEventDate">{t.exhibitionDate}</p>
-          <p className="currentEventDetails">{t.opening}</p>
-          <a href="https://www.instagram.com/chezluluavignon/" target="_blank" rel="noopener noreferrer" className="currentEventInstagram">{t.social} ↗</a>
+        <article className={'currentEventCard currentEventExhibition' + (hasExhibitionPhoto ? ' currentEventWithPhoto' : '')}>
+          {hasExhibitionPhoto && (
+            <div className="currentEventArtwork">
+              <img
+                src={exhibitionPhoto}
+                alt="Œuvre de MAT GM représentant un oiseau fantastique aux ailes vertes et rouges, peint sur bois."
+                loading="lazy"
+                width={792}
+                height={1310}
+              />
+            </div>
+          )}
+          <div className="currentEventExhibitionText">
+            <span className="currentEventCategory">{t.exhibitionType}</span>
+            <h3>{t.exhibitionTitle}</h3>
+            <p className="currentEventSubtitle">{t.exhibitionSubtitle}</p>
+            <p className="currentEventDate">{t.exhibitionDate}</p>
+            <p className="currentEventDetails">{t.opening}</p>
+            <a href="https://www.instagram.com/chezluluavignon/" target="_blank" rel="noopener noreferrer" className="currentEventInstagram">{t.social} ↗</a>
+          </div>
         </article>
       </div>
     </section>
